@@ -1,0 +1,7 @@
+
+go to target folder and run follwing command.
+This command is used when we have created a manifest file with entry point.
+java -cp aws-secretsmanager-examples-1.0-jar-with-dependencies.jar aws.example.secretsmanager.GetSecretValue
+
+Below command is used when we have created manifest file with entry point
+java -jar aws-secretsmanager-examples-1.0-jar-with-dependencies.jar
