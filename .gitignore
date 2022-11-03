@@ -14,3 +14,9 @@ xcuserdata
 .swiftpm
 Package.resolved
 super-linter.log
+### Gradle ###
+.gradle
+/build/
+### Kotlin ###
+.gradle
+bin/

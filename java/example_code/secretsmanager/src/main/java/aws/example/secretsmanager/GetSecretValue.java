@@ -37,7 +37,7 @@ public class GetSecretValue {
 
   public static void getSecret() {
 
-      String secretName = "testSecret";
+      String secretName = "postgresaccess";
       String endpoint = "secretsmanager.us-west-2.amazonaws.com";
       String region = "us-west-2";
 
