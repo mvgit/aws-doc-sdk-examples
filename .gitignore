@@ -18,5 +18,29 @@ super-linter.log
 .gradle
 /build/
 ### Kotlin ###
-.gradle
 bin/
+
+### Java ###
+
+java/example_code/*/.classpath
+java/example_code/*/.settings
+java/example_code/*/.project
+java/example_code/*/*/.project
+java/example_code/*/*/.classpath
+java/example_code/*/*/.settings/org.eclipse.jdt.core.prefs
+javav2/example_code/*/.settings/org.eclipse.core.resources.prefs
+javav2/example_code/*/.classpath
+javav2/example_code/*/.project
+javav2/example_code/*/.settings/org.eclipse.m2e.core.prefs
+javav2/example_code/*/.settings/org.eclipse.jdt.core.prefs
+javav2/usecases/*/.settings/org.eclipse.jdt.core.prefs
+javav2/usecases/*/.classpath
+javav2/*/*/.project
+javav2/*/*/.settings/org.eclipse.core.resources.prefs
+javav2/*/*/.settings/org.eclipse.m2e.core.prefs
+kotlin/*/*/.settings/org.eclipse.core.resources.prefs
+kotlin/*/*/.settings/org.eclipse.jdt.core.prefs
+kotlin/usecases/creating_workflows_stepfunctions/.settings/org.eclipse.m2e.core.prefs
+kotlin/usecases/creating_workflows_stepfunctions/.project
+kotlin/usecases/creating_workflows_stepfunctions/.classpath
+java/example_code/workdocs/download-user-doc/.settings/org.eclipse.m2e.core.prefs
