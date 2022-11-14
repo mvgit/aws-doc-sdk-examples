@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ElasticacheJ2Project</groupId>
+  <artifactId>ElasticacheJ2Project</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>Amazon Elasticache Examples</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+     <maven.compiler.source>1.8</maven.compiler.source>
+     <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  <build>
+    <plugins>
+    
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.4.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>com.amazon.elasticache.AutoDiscoveryDemo</mainClass>
+                </transformer>
+              </transformers>
+              <filters>
+					<filter>
+                        <artifact>*:*</artifact>
+                        <excludes>
+                            <exclude>AmazonElastiCacheClusterClient-1.2.0.jar</exclude>
+                        </excludes>
+	                </filter>
+	            </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!--
+	    <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-jar-plugin</artifactId>
+		    <configuration>
+		        <archive>
+		            <manifest>
+		                <addClasspath>true</addClasspath>
+		                <classpathPrefix>libs/</classpathPrefix>
+		                <mainClass>
+		                    com.amazon.elasticache.AutoDiscoveryDemo
+		                </mainClass>
+		            </manifest>
+		        </archive>
+		    </configuration>
+		</plugin>
+		-->
+	<!--
+		<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-dependency-plugin</artifactId>
+		    <executions>
+		        <execution>
+		            <id>copy-dependencies</id>
+		            <phase>prepare-package</phase>
+		            <goals>
+		                <goal>copy-dependencies</goal>
+		            </goals>
+		            <configuration>
+		                <outputDirectory>
+		                    ${project.build.directory}/libs
+		                </outputDirectory>
+		            </configuration>
+		        </execution>
+		    </executions>
+		</plugin>
+	-->
+    </plugins>
+  </build>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+          <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>2.17.230</version>
+                <type>pom</type>
+                <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <dependencies>
+  
+  <dependency>
+        <groupId>com.ssl.elasticache</groupId>
+        <artifactId>ssl_elasticache</artifactId>
+        <version>1.0.0</version>
+  </dependency>
+  
+  <!--
+	<dependency>
+		<groupId>net.spy</groupId>
+		<artifactId>spymemcached</artifactId>
+		<version>2.12.3</version>
+	</dependency>
+-->
+
+  </dependencies>
+</project>
+
