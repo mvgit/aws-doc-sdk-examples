@@ -27,7 +27,7 @@
             <configuration>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>com.amazon.elasticache.AutoDiscoveryDemo</mainClass>
+                  <mainClass>com.amazon.elasticache.MemcachedClientFactory</mainClass>
                 </transformer>
               </transformers>
               <filters>
