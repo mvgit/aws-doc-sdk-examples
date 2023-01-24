@@ -8,12 +8,25 @@
   <name>Amazon SecretsManager Examples</name>
   <url>http://maven.apache.org</url>
   <properties>
+  <!--
      <maven.compiler.source>1.8</maven.compiler.source>
      <maven.compiler.target>1.8</maven.compiler.target>
+     -->
   </properties>
   <build>
     <plugins>
-    <plugin>
+    
+	    <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <version>3.10.1</version>
+	        <configuration>
+	          <source>1.8</source>
+	          <target>1.8</target>
+	        </configuration>
+	     </plugin>
+	     
+    	<plugin>
             <artifactId>maven-dependency-plugin</artifactId>
             <executions>
               <execution>
@@ -26,8 +39,30 @@
                 </configuration>
               </execution>
             </executions>
+      	</plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.4.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>aws.example.secretsmanager.GetSecretValue</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <!-- any other plugins -->
+  <!--    
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <executions>
@@ -49,6 +84,7 @@
           </descriptorRefs>
         </configuration>
       </plugin>
+  -->    
     </plugins>
   </build>
 

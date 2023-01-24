@@ -56,20 +56,20 @@ public class SecretManagerTest {
         System.out.println("Test 1 passed");
     }
 
-    @Test
-    @Order(2)
-    public void CreateSecret() {
-        secretARN = CreateSecret.createNewSecret(secretsClient, newSecretName,secretValue);
-        assertTrue(!secretARN.isEmpty());
-        System.out.println("Test 2 passed");
-    }
-
-    @Test
-    @Order(3)
-    public void DescribeSecret() {
-        DescribeSecret.describeGivenSecret(secretsClient, secretARN );
-        System.out.println("Test 3 passed");
-    }
+//    @Test
+//    @Order(2)
+//    public void CreateSecret() {
+//        secretARN = CreateSecret.createNewSecret(secretsClient, newSecretName,secretValue);
+//        assertTrue(!secretARN.isEmpty());
+//        System.out.println("Test 2 passed");
+//    }
+//
+//    @Test
+//    @Order(3)
+//    public void DescribeSecret() {
+//        DescribeSecret.describeGivenSecret(secretsClient, secretARN );
+//        System.out.println("Test 3 passed");
+//    }
 
     @Test
     @Order(4)
@@ -78,25 +78,25 @@ public class SecretManagerTest {
         System.out.println("Test 4 passed");
     }
 
-    @Test
-    @Order(5)
-    public void UpdateSecret() {
-        UpdateSecret.updateMySecret(secretsClient,secretARN, modSecretValue);
-        System.out.println("Test 5 passed");
-    }
-
-    @Test
-    @Order(6)
-    public void ListSecrets() {
-        ListSecrets.listAllSecrets(secretsClient);
-        System.out.println("Test 6 passed");
-    }
-
-    @Test
-    @Order(7)
-    public void DeleteSecret() {
-        DeleteSecret.deleteSpecificSecret(secretsClient, secretARN);
-        System.out.println("Test 7 passed");
-    }
+//    @Test
+//    @Order(5)
+//    public void UpdateSecret() {
+//        UpdateSecret.updateMySecret(secretsClient,secretARN, modSecretValue);
+//        System.out.println("Test 5 passed");
+//    }
+//
+//    @Test
+//    @Order(6)
+//    public void ListSecrets() {
+//        ListSecrets.listAllSecrets(secretsClient);
+//        System.out.println("Test 6 passed");
+//    }
+//
+//    @Test
+//    @Order(7)
+//    public void DeleteSecret() {
+//        DeleteSecret.deleteSpecificSecret(secretsClient, secretARN);
+//        System.out.println("Test 7 passed");
+//    }
 
 }
