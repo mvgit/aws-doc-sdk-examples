@@ -10,7 +10,7 @@
 package com.example.secrets;
 
 //snippet-start:[secretsmanager.java2.get_secret.import]
-import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
+
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
@@ -41,15 +41,16 @@ public class GetSecretValue {
         }
 
         String secretName = args[0];
-        Region region = Region.US_WEST_2;
+        Region region = Region.US_EAST_1;
+
         SecretsManagerClient secretsClient = SecretsManagerClient.builder()
-            .region(region)
-            .credentialsProvider(ProfileCredentialsProvider.create())
-            .build();
+                .region(region)
+                .build();
 
         getValue(secretsClient, secretName);
         secretsClient.close();
     }
+
 
     //snippet-start:[secretsmanager.java2.get_secret.main]
     public static void getValue(SecretsManagerClient secretsClient,String secretName) {

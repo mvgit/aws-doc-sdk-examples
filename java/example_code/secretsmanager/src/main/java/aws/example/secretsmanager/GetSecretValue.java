@@ -22,24 +22,39 @@
  */
 package aws.example.secretsmanager;
 import java.nio.ByteBuffer;
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.AmazonServiceException;
 import com.amazonaws.client.builder.AwsClientBuilder;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
-import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.services.secretsmanager.*;
 import com.amazonaws.services.secretsmanager.model.*;
-
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
+import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
+import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueResponse;	
 public class GetSecretValue {
+    
+  
   public static void main(String[] args) {
+
+    final String usage = "\n" +
+    "Usage:\n" +
+    "    <secretName> \n\n" +
+    "Where:\n" +
+    "    secretName - The name of the secret (for example, tutorials/MyFirstSecret). \n";
+
+    if (args.length != 1) {
+        System.out.println(usage);
+        System.exit(1);
+    }
+
+    String secretName = args[0];
+
+    getSecret(secretName);
     getSecret();
   }
 
-  public static void getSecret() {
+  public static void getSecret(String secretName) {
 
-      String secretName = "postgresaccess";
-      String endpoint = "secretsmanager.us-west-2.amazonaws.com";
-      String region = "us-west-2";
+      String endpoint = "secretsmanager.us-east-1.amazonaws.com";
+      String region = "us-east-1";
 
       AwsClientBuilder.EndpointConfiguration config = new AwsClientBuilder.EndpointConfiguration(endpoint, region);
       AWSSecretsManagerClientBuilder clientBuilder = AWSSecretsManagerClientBuilder.standard();
@@ -75,7 +90,47 @@ public class GetSecretValue {
           binarySecretData = getSecretValueResult.getSecretBinary();
           System.out.println(binarySecretData.toString());
       }
-
   }
+
+  // Use this code snippet in your app.
+// If you need more information about configurations or implementing the sample
+// code, visit the AWS docs:
+// https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html
+
+// Make sure to import the following packages in your code
+// import software.amazon.awssdk.regions.Region;
+// import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
+// import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
+// import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueResponse;	
+
+public static void getSecret() {
+
+    String secretName = "chc/rds/oracle/fdb3";
+    Region region = Region.of("us-east-1");
+
+    // Create a Secrets Manager client
+    SecretsManagerClient client = SecretsManagerClient.builder()
+            .region(region)
+            .build();
+
+    GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
+            .secretId(secretName)
+            .build();
+
+    GetSecretValueResponse getSecretValueResponse;
+
+    try {
+        getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
+    } catch (Exception e) {
+        // For a list of exceptions thrown, see
+        // https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+        throw e;
+    }
+
+    String secret = getSecretValueResponse.secretString();
+    System.out.println(secret);
+
+    // Your code goes here.
+}
 
 }

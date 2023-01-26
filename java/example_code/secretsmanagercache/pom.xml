@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>aws.example.secretsmanager</groupId>
-  <artifactId>aws-secretsmanager-examples</artifactId>
+  <artifactId>aws-secretsmanager-cache</artifactId>
   <packaging>jar</packaging>
   <version>1.0</version>
-  <name>Amazon SecretsManager Examples</name>
+  <name>Amazon SecretsManager Cache Examples</name>
   <url>http://maven.apache.org</url>
   <properties>
   <!--
@@ -88,7 +88,7 @@
     </plugins>
   </build>
 
-  <dependencyManagement>
+  <!-- <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>com.amazonaws</groupId>
@@ -98,13 +98,23 @@
         <scope>import</scope>
       </dependency>
     </dependencies>
-  </dependencyManagement>
+  </dependencyManagement> -->
   <dependencies>
+    <dependency>
+      <groupId>com.amazonaws.secretsmanager</groupId>
+      <artifactId>aws-secretsmanager-caching-java</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+    <!-- <dependency>
+      <groupId>com.amazonaws.secretsmanager</groupId>
+      <artifactId>aws-secretsmanager-jdbc</artifactId>
+      <version>1.0.8</version>
+    </dependency>
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-secretsmanager</artifactId>
       <version>1.11.339</version>
-    </dependency>
+    </dependency> -->
     <!-- <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
